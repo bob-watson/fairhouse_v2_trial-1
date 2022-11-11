@@ -6,9 +6,12 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <p>
-      home works!
-    </p>
+    <section>
+      <input type="text" placeholder="Filter by city">
+      <button type="button">Search</button>
+    </section>
+    <section class="results">
+    </section>
   `,
   styles: [
   ]
