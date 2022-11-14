@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HousingLocation } from '../housing-location';
 
 @Component({
   selector: 'app-housing-location',
@@ -8,13 +9,15 @@ import { CommonModule } from '@angular/common';
   template: `
   <article class="listing">
     <img class="listing-photo">
-    <h1 class="listing-heading"></h1>
-    <p class="listing-location"></p>
+    <h1 class="listing-heading">{{housingLocation.name}}</h1>
+    <p class="listing-location">{{housingLocation.city}}, {{housingLocation.state}}</p>
    </article>`,
   styles: [
   ]
 })
 export class HousingLocationComponent implements OnInit {
+
+  @Input() housingLocation!: HousingLocation;
 
   constructor() { }
 
