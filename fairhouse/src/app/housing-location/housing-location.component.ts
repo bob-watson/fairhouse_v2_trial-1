@@ -8,7 +8,7 @@ import { HousingLocation } from '../housing-location';
   imports: [CommonModule],
   template: `
   <article class="listing">
-    <img class="listing-photo">
+    <img class="listing-photo" src="housingLocation.photo" >
     <h1 class="listing-heading"></h1>
     <p class="listing-location"></p>
    </article>`,
