@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HousingLocationComponent } from '../housing-location/housing-location.component';
 import { HousingLocation } from '../housing-location';
+import { HousingService } from '../housing.service';
 
 @Component({
   selector: 'app-home',
@@ -43,34 +44,12 @@ import { HousingLocation } from '../housing-location';
 })
 export class HomeComponent implements OnInit {
 
-  houseList : HousingLocation[];
+  housingService = inject(HousingService);
+  houseList: HousingLocation[] = [];
 
-  constructor() {
-    this.houseList = [
-      {
-        id: 9999,
-        name: "Test Home 1",
-        city: "Test city 1",
-        state: "ST-1",
-        photo: "photo URL 1 goes here",
-        availableUnits: 99,
-        wifi: true,
-        laundry: false,
-      },
-      {
-        id: 8888,
-        name: "Test Home 2",
-        city: "Test city 2",
-        state: "ST-2",
-        photo: "photo URL 2 goes here",
-        availableUnits: 88,
-        wifi: false,
-        laundry: true,
-      }
-    ];
-  }
+  constructor() { }
 
   ngOnInit(): void {
+    this.houseList = this.housingService.getAllHousingLocations();
   }
-
 }
