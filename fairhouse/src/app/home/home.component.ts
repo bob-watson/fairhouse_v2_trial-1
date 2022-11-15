@@ -16,7 +16,7 @@ import { HousingLocation } from '../housing-location';
       <button type="button">Search</button>
     </section>
     <section class="results"></section>
-    <app-housing-location housingLocation="this.onlyHouse"></app-housing-location>
+    <app-housing-location [housingLocation]="this.onlyHouse"></app-housing-location>
   `,
   styles: [
   ]
