@@ -15,8 +15,12 @@ import { HousingLocation } from '../housing-location';
       <input type="text" placeholder="Filter by city">
       <button type="button">Search</button>
     </section>
-    <section class="results"></section>
-    <app-housing-location [housingLocation]="this.houseList[1]"></app-housing-location>
+    <section class="results">
+      <app-housing-location
+        *ngFor="let thisLocation of this.houseList"
+        [housingLocation]="thisLocation">
+      </app-housing-location>
+    </section>
   `,
   styles: [
   ]
