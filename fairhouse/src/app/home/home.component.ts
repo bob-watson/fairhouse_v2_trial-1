@@ -16,26 +16,28 @@ import { HousingLocation } from '../housing-location';
       <button type="button">Search</button>
     </section>
     <section class="results"></section>
-    <app-housing-location [housingLocation]="this.onlyHouse"></app-housing-location>
+    <app-housing-location [housingLocation]="this.houseList[0]"></app-housing-location>
   `,
   styles: [
   ]
 })
 export class HomeComponent implements OnInit {
 
-  onlyHouse : HousingLocation;
+  houseList : HousingLocation[];
 
   constructor() {
-    this.onlyHouse = {
-      id: 9999,
-      name: "Test Home",
-      city: "Test city",
-      state: "ST",
-      photo: "photo URL goes here",
-      availableUnits: 99,
-      wifi: true,
-      laundry: false,
-    };
+    this.houseList = [
+      {
+        id: 9999,
+        name: "Test Home 1",
+        city: "Test city 1",
+        state: "ST-1",
+        photo: "photo URL 1 goes here",
+        availableUnits: 99,
+        wifi: true,
+        laundry: false,
+      }
+    ];
   }
 
   ngOnInit(): void {
