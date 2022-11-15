@@ -9,8 +9,8 @@ import { HousingLocation } from '../housing-location';
   template: `
   <article class="listing">
     <img class="listing-photo">
-    <h1 class="listing-heading"></h1>
-    <p class="listing-location"></p>
+    <h1 class="listing-heading">{{housingLocation.name}}</h1>
+    <p class="listing-location">{{housingLocation.city}}, {{housingLocation.state}}</p>
    </article>`,
   styles: [
   ]
