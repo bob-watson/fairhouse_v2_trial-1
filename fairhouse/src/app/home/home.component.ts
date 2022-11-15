@@ -23,7 +23,20 @@ import { HousingLocation } from '../housing-location';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  onlyHouse : HousingLocation;
+
+  constructor() {
+    this.onlyHouse = {
+      id: 9999,
+      name: "Test Home",
+      city: "Test city",
+      state: "ST",
+      photo: "photo URL goes here",
+      availableUnits: 99,
+      wifi: true,
+      laundry: false,
+    };
+  }
 
   ngOnInit(): void {
   }
