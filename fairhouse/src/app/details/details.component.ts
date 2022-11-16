@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-details',
@@ -8,6 +9,7 @@ import { CommonModule } from '@angular/common';
   template: `
     <p>
       details works!
+      ID  = {{this.housingLocationId}}
     </p>
   `,
   styles: [
@@ -15,9 +17,14 @@ import { CommonModule } from '@angular/common';
 })
 export class DetailsComponent implements OnInit {
 
+  private route: ActivatedRoute = inject(ActivatedRoute);
+  housingLocationId: number = 0;
+
   constructor() { }
 
   ngOnInit(): void {
+    const routeParams = this.route.snapshot.paramMap;
+    this.housingLocationId = Number(routeParams.get('id'));
   }
 
 }

@@ -1,16 +1,21 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HousingLocation } from '../housing-location';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-housing-location',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    RouterModule
+  ],
   template: `
   <article class="listing">
     <img class="listing-photo" [src]="housingLocation.photo" alt="exterior photo of {{housingLocation.name}}" >
     <h1 class="listing-heading">{{housingLocation.name}}</h1>
     <p class="listing-location">{{housingLocation.city}}, {{housingLocation.state}}</p>
+    <a [routerLink]="['/details', housingLocation.id]">Learn more about: {{housingLocation.id}}</a>
    </article>`,
   styles: [
     `.listing {
