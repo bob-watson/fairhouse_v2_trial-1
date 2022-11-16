@@ -146,3 +146,28 @@ button.primary {
     border-radius: 10px;
     padding: .2em;
 }
+
+a:link {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+a:visited {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: none;
+  color: grey;
+  cursor: pointer;
+}
+
+a:active {
+  text-decoration: none;
+  color: blue;
+  cursor: pointer;
+}
+
