@@ -18,7 +18,7 @@ import { HousingService } from '../housing.service';
     </section>
     <section class="results">
       <app-housing-location
-        *ngFor="let thisLocation of this.houseList"
+        *ngFor="let thisLocation of this.filteredHouseList"
         [housingLocation]="thisLocation">
       </app-housing-location>
     </section>
@@ -46,13 +46,23 @@ export class HomeComponent implements OnInit {
 
   housingService = inject(HousingService);
   houseList: HousingLocation[] = [];
+  filteredHouseList: HousingLocation[] = [];
 
   constructor() { }
+
+  filterResults(text: string) {
+    if (!text) this.filteredHouseList = this.houseList;
+
+    this.filteredHouseList = this.houseList.filter(
+      house => house?.city.toLowerCase().includes(text.toLowerCase())
+    );
+  }
 
   ngOnInit(): void {
     this.housingService.getAllHousingLocations().then(
       (housingLocationList: HousingLocation[]) => {
         this.houseList = housingLocationList;
+        this.filteredHouseList = housingLocationList;
       });
   }
 
