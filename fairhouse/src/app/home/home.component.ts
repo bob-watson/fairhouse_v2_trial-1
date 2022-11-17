@@ -13,8 +13,8 @@ import { HousingService } from '../housing.service';
   ],
   template: `
     <section>
-      <input type="text" placeholder="Filter by city">
-      <button type="button">Search</button>
+    <input type="text" placeholder="Filter by city" #filter>
+      <button type="button" class="primary" (click)="filterResults(filter.value)">Search</button>
     </section>
     <section class="results">
       <app-housing-location
