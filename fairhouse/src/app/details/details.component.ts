@@ -29,6 +29,20 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
         </li>
       </ul>
     </section>
+    <section class="listing-apply">
+      <h2 class="section-heading">Apply to live here</h2>
+      <form [formGroup]="applyForm" (submit)="submitApplication()">
+        <label for="first-name">First Name</label>
+        <input id="first-name" type="text" formControlName="firstName">
+
+        <label id="last-name">Last Name</label>
+        <input id="last-name" type="text" formControlName="lastName">
+
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email">
+        <button type="submit" class="primary">Apply now</button>
+      </form>
+    </section>
   </section>
   `,
   styles: [
@@ -61,7 +75,21 @@ export class DetailsComponent implements OnInit {
 
   housingLocationId: number = 0;
 
+  applyForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    email: new FormControl('')
+  });
+
   constructor() { }
+
+  submitApplication() {
+    this.housingService.submitApplication(
+      this.applyForm.value.firstName ?? '',
+      this.applyForm.value.lastName ?? '',
+      this.applyForm.value.email ?? ''
+    );
+  }
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
