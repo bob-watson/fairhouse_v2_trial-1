@@ -132,7 +132,10 @@ export class DetailsComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     this.housingLocationId = Number(routeParams.get('id'));
 
-    this.housingLocationDetails = this.housingService.getHousingLocationById(this.housingLocationId);
+    this.housingService.getHousingLocationById(this.housingLocationId)
+      .then((housingLocation: HousingLocation) => {
+      this.housingLocationDetails = housingLocation;
+    });
   }
 
 }

@@ -50,6 +50,10 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.houseList = this.housingService.getAllHousingLocations();
+    this.housingService.getAllHousingLocations().then(
+      (housingLocationList: HousingLocation[]) => {
+        this.houseList = housingLocationList;
+      });
   }
+
 }
