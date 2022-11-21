@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HousingLocationComponent } from '../housing-location/housing-location.component';
 import { HousingLocation } from '../housing-location';
 import { HousingService } from '../housing.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -44,6 +45,8 @@ import { HousingService } from '../housing.service';
 })
 export class HomeComponent implements OnInit {
 
+  private route: ActivatedRoute = inject(ActivatedRoute);
+
   housingService = inject(HousingService);
   houseList: HousingLocation[] = [];
   filteredHouseList: HousingLocation[] = [];
@@ -53,17 +56,27 @@ export class HomeComponent implements OnInit {
   filterResults(text: string) {
     if (!text) this.filteredHouseList = this.houseList;
 
+    console.log (`FilterResults looking for ${text}.`)
     this.filteredHouseList = this.houseList.filter(
       house => house?.city.toLowerCase().includes(text.toLowerCase())
     );
   }
 
   ngOnInit(): void {
+    const routeParams = this.route.snapshot.paramMap;
+    const cityParam = String(routeParams.get('cityParam'));
+
     this.housingService.getAllHousingLocations().then(
       (housingLocationList: HousingLocation[]) => {
         this.houseList = housingLocationList;
         this.filteredHouseList = housingLocationList;
+
+        if (cityParam?.length > 0) {
+          this.filterResults(cityParam);
+          console.log (`FairHouse city: ${cityParam}`)
+        }
+
       });
-  }
+    }
 
 }

@@ -7,6 +7,12 @@ const appRoutes: Routes = [
     path: '', component: HomeComponent,
   },
   {
+    path: 'homes',  component: HomeComponent
+  },
+  {
+    path: 'homes/city/:cityParam',  component: HomeComponent
+  },
+  {
     path: 'details', component: DetailsComponent
   },
   {
